@@ -5,6 +5,9 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 export const metadata = {
+    verification: {
+    google: "iLU0kcG1TCLC5qL"
+  },
   metadataBase: new URL('https://shubhaitsolution.com'),
   title: "Shubha IT Solution | Professional IT & Software Services in India",
   description: "Shubha IT Solution is a leading IT company offering web development, mobile apps, cloud infrastructure, software engineering & IT consulting. Email: solutionshubhait@gmail.com | Call +91 6307558532 or +91 9528658256 today!",
