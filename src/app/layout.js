@@ -6,7 +6,7 @@ import "./globals.css";
 
 export const metadata = {
     verification: {
-    google: "iLU0kcG1TCLC5qL"
+    google: "iLU0kcG1TCLC5qLupw5cPh6x_Xa7N_2KB30VhDKxX8g"
   },
   metadataBase: new URL('https://shubhaitsolution.com'),
   title: "Shubha IT Solution | Professional IT & Software Services in India",
@@ -66,10 +66,7 @@ export const metadata = {
   },
   alternates: {
     canonical: 'https://shubhaitsolution.com',
-  },
-  verification: {
-    google: 'google-site-verification-code',
-  },
+  }
 };
 
 export default function RootLayout({ children }) {
