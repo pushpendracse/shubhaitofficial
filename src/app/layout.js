@@ -175,22 +175,22 @@ export default function RootLayout({ children }) {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Services",
-                  "item": "https://shubhaitsolution.com/#services",
-                  "@id": "https://shubhaitsolution.com/#services"
+                  "item": "https://shubhaitsolution.com/services",
+                  "@id": "https://shubhaitsolution.com/services"
                 },
                 {
                   "@type": "ListItem",
                   "position": 3,
                   "name": "About",
-                  "item": "https://shubhaitsolution.com/#about",
-                  "@id": "https://shubhaitsolution.com/#about"
+                  "item": "https://shubhaitsolution.com/about",
+                  "@id": "https://shubhaitsolution.com/about"
                 },
                 {
                   "@type": "ListItem",
                   "position": 4,
                   "name": "Contact",
-                  "item": "https://shubhaitsolution.com/#contact",
-                  "@id": "https://shubhaitsolution.com/#contact"
+                  "item": "https://shubhaitsolution.com/contact",
+                  "@id": "https://shubhaitsolution.com/contact"
                 }
               ]
             })
