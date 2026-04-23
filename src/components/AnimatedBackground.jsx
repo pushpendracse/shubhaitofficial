@@ -12,18 +12,18 @@ export default function AnimatedBackground() {
           <defs>
             <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.8" />
-              <stop offset="50%" stopColor="#6366f1" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#2563eb" stopOpacity="0.8" />
               <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.8" />
             </linearGradient>
             <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.6" />
-              <stop offset="50%" stopColor="#ec4899" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.6" />
+              <stop offset="0%" stopColor="#f97316" stopOpacity="0.6" />
+              <stop offset="50%" stopColor="#fbbf24" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#f97316" stopOpacity="0.6" />
             </linearGradient>
             <linearGradient id="waveGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.5" />
-              <stop offset="50%" stopColor="#ec4899" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.5" />
+              <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.5" />
+              <stop offset="50%" stopColor="#f97316" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0.5" />
             </linearGradient>
           </defs>
           
@@ -51,15 +51,15 @@ export default function AnimatedBackground() {
       </div>
 
       {/* Floating animated colorful blobs */}
-      <div className="absolute top-20 left-1/4 w-72 h-72 bg-gradient-to-br from-blue-500/20 via-indigo-500/10 to-transparent rounded-full blur-[100px] animate-float-slow"></div>
-      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-br from-purple-500/20 via-pink-500/10 to-transparent rounded-full blur-[120px] animate-float-medium"></div>
-      <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-br from-cyan-500/15 via-pink-500/10 to-transparent rounded-full blur-[100px] animate-float-fast"></div>
+      <div className="absolute top-20 left-1/4 w-72 h-72 bg-gradient-to-br from-blue-500/20 via-blue-600/10 to-transparent rounded-full blur-[100px] animate-float-slow"></div>
+      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/20 via-orange-600/10 to-transparent rounded-full blur-[120px] animate-float-medium"></div>
+      <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-br from-sky-500/15 via-orange-500/10 to-transparent rounded-full blur-[100px] animate-float-fast"></div>
       
       {/* Colorful glowing orbs */}
       <div className="absolute top-1/2 left-1/4 w-3 h-3 bg-blue-500 rounded-full animate-pulse opacity-70 shadow-lg shadow-blue-500/50"></div>
-      <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-purple-500 rounded-full animate-pulse opacity-60 shadow-lg shadow-purple-500/50"></div>
-      <div className="absolute bottom-1/4 right-1/3 w-3 h-3 bg-cyan-500 rounded-full animate-pulse opacity-70 shadow-lg shadow-cyan-500/50"></div>
-      <div className="absolute top-2/3 left-1/2 w-2 h-2 bg-pink-500 rounded-full animate-pulse opacity-60 shadow-lg shadow-pink-500/50"></div>
+      <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-orange-500 rounded-full animate-pulse opacity-60 shadow-lg shadow-orange-500/50"></div>
+      <div className="absolute bottom-1/4 right-1/3 w-3 h-3 bg-sky-500 rounded-full animate-pulse opacity-70 shadow-lg shadow-sky-500/50"></div>
+      <div className="absolute top-2/3 left-1/2 w-2 h-2 bg-orange-400 rounded-full animate-pulse opacity-60 shadow-lg shadow-orange-400/50"></div>
     </div>
   );
 }

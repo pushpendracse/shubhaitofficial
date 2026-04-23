@@ -25,86 +25,92 @@ export default function Navbar() {
     // Removed top-level mounted check to ensure SSR HTML contains the navbar links
 
     return (
-        <nav suppressHydrationWarning className="fixed top-0 left-0 right-0 z-50 border-b bg-background/80 backdrop-blur-md">
-            <div className="container mx-auto flex h-24 items-center justify-between px-4">
-                <Link href="/" className="flex items-center gap-2 group -ml-6">
-                    <div className="relative h-40 w-96 md:h-36 md:w-[28rem] transition-transform group-hover:scale-105">
+        <nav suppressHydrationWarning className="fixed top-0 left-0 right-0 z-50 border-b bg-background/95 backdrop-blur-xl shadow-lg overflow-hidden">
+            {/* Subtle background image for Navbar */}
+            <div className="absolute inset-0 z-[-1] opacity-10">
+                <Image
+                    src="/header-bg.png"
+                    alt="header background"
+                    fill
+                    className="object-cover"
+                />
+            </div>
+            <div className="w-full max-w-[1800px] mx-auto flex h-20 md:h-24 items-center justify-between px-4 md:px-10">
+                <Link href="/" className="flex-shrink-0 flex items-center group">
+                    <div className="relative h-12 w-40 md:h-16 md:w-64 transition-transform group-hover:scale-105">
                         <Image
                             src="/Logo.png"
                             alt="Shubha IT Solution"
                             fill
-                            className={`object-contain ${mounted && theme === 'dark' ? 'brightness-125' : ''}`}
+                            className="object-contain"
                             priority
                         />
                     </div>
                 </Link>
 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center gap-6">
-                    <Link href="/#home" className="text-sm font-medium hover:text-primary transition-colors">
+                <div className="hidden md:flex items-center gap-10">
+                    <Link href="/" className="text-sm font-bold hover:text-primary transition-all hover:-translate-y-0.5">
                         Home
                     </Link>
-                        <Link 
-                            href="/portfolio" 
-                            className="text-sm font-bold bg-primary text-white px-5 py-2 rounded-full hover:bg-primary/90 transition-all shadow-md active:scale-95"
-                        >
-                            Portfolio
-                        </Link>
-                    <Link href="/#services" className="text-sm font-medium hover:text-primary transition-colors">
+                    <Link href="/services" className="text-sm font-bold hover:text-primary transition-all hover:-translate-y-0.5">
                         Services
                     </Link>
-                    <Link href="/#about" className="text-sm font-medium hover:text-primary transition-colors">
+                    <Link href="/about" className="text-sm font-bold hover:text-primary transition-all hover:-translate-y-0.5">
                         About
                     </Link>
-                    <Link href="/#contact" className="text-sm font-medium hover:text-primary transition-colors">
-                        Contact
+                    <Link
+                        href="/portfolio"
+                        className="text-sm font-black text-blue-600 hover:text-orange-500 transition-all hover:-translate-y-0.5"
+                    >
+                        Portfolio
                     </Link>
-                    <div className="ml-2 flex items-center gap-2">
+                    <div className="ml-6 flex items-center gap-4">
                         <Button
-                            variant="outline"
+                            variant="ghost"
                             size="icon"
                             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                            className="h-9 w-9"
+                            className="h-10 w-10 rounded-xl hover:bg-blue-600/10 transition-colors"
                         >
-                            {mounted && theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                            {mounted && theme === 'dark' ? <Sun className="h-5 w-5 text-orange-500" /> : <Moon className="h-5 w-5 text-blue-600" />}
                         </Button>
-                        <Button size="sm" asChild>
-                            <Link href="#contact">Get a Quote</Link>
+                        <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white rounded-xl px-8 shadow-xl shadow-orange-600/20 transition-all active:scale-95 font-black" asChild>
+                            <Link href="/contact">Get a Quote</Link>
                         </Button>
                     </div>
                 </div>
 
                 {/* Mobile Navigation */}
-                <div className="flex items-center gap-2 md:hidden">
+                <div className="flex items-center gap-4 md:hidden">
                     <Button
-                        variant="outline"
+                        variant="ghost"
                         size="icon"
                         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                        className="h-9 w-9"
+                        className="h-10 w-10 rounded-xl"
                     >
-                        {mounted && theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                        {mounted && theme === 'dark' ? <Sun className="h-6 w-6 text-orange-500" /> : <Moon className="h-6 w-6 text-blue-600" />}
                     </Button>
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="outline" size="icon" className="h-9 w-9">
-                                <Menu className="h-4 w-4" />
+                            <Button variant="outline" size="icon" className="h-12 w-12 border-2 rounded-xl shadow-md">
+                                <Menu className="h-7 w-7" />
                             </Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end" className="w-48">
-                            <DropdownMenuItem asChild>
-                                <Link href="/#home">Home</Link>
+                        <DropdownMenuContent align="end" className="w-64 p-3 mt-4 rounded-2xl shadow-2xl border-none glass-dark">
+                            <DropdownMenuItem asChild className="rounded-xl mb-1">
+                                <Link href="/" className="flex w-full py-3 font-bold">Home</Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                                <Link href="/portfolio" className="font-bold text-primary">Portfolio</Link>
+                            <DropdownMenuItem asChild className="rounded-xl mb-1">
+                                <Link href="/services" className="flex w-full py-3 font-bold">Services</Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                                <Link href="/#services">Services</Link>
+                            <DropdownMenuItem asChild className="rounded-xl mb-1">
+                                <Link href="/about" className="flex w-full py-3 font-bold">About</Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                                <Link href="/#about">About</Link>
+                            <DropdownMenuItem asChild className="rounded-xl mb-1">
+                                <Link href="/portfolio" className="flex w-full py-3 font-black text-blue-500">Portfolio</Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                                <Link href="/#contact">Contact</Link>
+                            <DropdownMenuItem asChild className="rounded-xl bg-orange-600 text-white hover:bg-orange-700 mt-2">
+                                <Link href="/contact" className="flex w-full py-3 justify-center font-black">Get a Quote</Link>
                             </DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
