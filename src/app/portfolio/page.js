@@ -10,18 +10,18 @@ import { Button } from '@/components/ui/button';
 const portfolioData = [
     {
         id: 1,
-        title: "Nexus Analytics Dashboard",
-        description: "A comprehensive e-commerce analytics platform featuring real-time data tracking, predictive inventory management, and multi-channel integration.",
-        thumbnail: "/portfolio/ecommerce.png",
-        demoLink: "https://example.com/demo1",
-        tags: ["Next.js", "Tailwind", "Chart.js"]
+        title: "Maison Dorée Fine Dining",
+        description: "A luxury restaurant digital experience featuring an artisanal menu interface, integrated reservation system, and immersive visual storytelling.",
+        thumbnail: "/portfolio/restaurant.png",
+        demoLink: "https://restaurant.shubhaitsolution.com/",
+        tags: ["UI/UX", "Next.js", "Hospitality"]
     },
     {
         id: 2,
         title: "Ether SaaS landing",
         description: "High-conversion landing page for a cloud-native SaaS platform with interactive pricing, feature tours, and seamless animations.",
         thumbnail: "/portfolio/saas.png",
-        demoLink: "https://example.com/demo2",
+        demoLink: "https://restaurant.shubhaitsolution.com/",
         tags: ["React", "Framer Motion", "UI/UX"]
     },
     {
@@ -29,7 +29,7 @@ const portfolioData = [
         title: "NeuroGen AI Platform",
         description: "An AI-powered content generation suite that allows users to create images, text, and music through a intuitive unified interface.",
         thumbnail: "/portfolio/ai.png",
-        demoLink: "https://example.com/demo3",
+        demoLink: "https://restaurant.shubhaitsolution.com/",
         tags: ["AI/ML", "TypeScript", "Node.js"]
     },
     {
@@ -37,7 +37,7 @@ const portfolioData = [
         title: "Vault Fintech App",
         description: "Premium investment and crypto management application with institutional-grade security and advanced portfolio tracking.",
         thumbnail: "/portfolio/fintech.png",
-        demoLink: "https://example.com/demo4",
+        demoLink: "https://restaurant.shubhaitsolution.com/",
         tags: ["Blockchain", "Security", "Real-time"]
     },
     {
@@ -45,7 +45,7 @@ const portfolioData = [
         title: "Global Supply Chain Pro",
         description: "Enterprise level logistics tracker optimized for global freight companies with IoT integration and route optimization.",
         thumbnail: "/portfolio/ecommerce.png", // Reusing image for demo variety
-        demoLink: "https://example.com/demo5",
+        demoLink: "https://restaurant.shubhaitsolution.com/",
         tags: ["Enterprise", "IoT", "React"]
     },
     {
@@ -53,7 +53,7 @@ const portfolioData = [
         title: "Lumina Creative Studio",
         description: "A minimal and artistic portfolio template for creators and agencies, focusing on high-quality visuals and smooth transitions.",
         thumbnail: "/portfolio/saas.png", // Reusing image for demo variety
-        demoLink: "https://example.com/demo6",
+        demoLink: "https://restaurant.shubhaitsolution.com/",
         tags: ["Portfolio", "Creative", "Animations"]
     }
 ];
