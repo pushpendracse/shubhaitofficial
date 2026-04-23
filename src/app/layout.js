@@ -200,8 +200,7 @@ export default function RootLayout({ children }) {
           }}
         />
         
-        {/* Google Search Console verification - Update with actual code */}
-        <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" />
+        
         
         {/* Additional SEO Meta Tags */}
         <meta name="article:publisher" content="https://shubhaitsolution.com" />
