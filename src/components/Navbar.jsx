@@ -18,14 +18,14 @@ import {
 export default function Navbar() {
     const [mounted, setMounted] = React.useState(false);
     const [isScrolled, setIsScrolled] = React.useState(false);
-    const { theme, setTheme } = useTheme();
+    const { theme, resolvedTheme, setTheme } = useTheme();
     const pathname = usePathname();
-    
+
     const isTransparent = pathname === '/' && !isScrolled;
 
     React.useEffect(() => {
         setMounted(true);
-        
+
         const handleScroll = () => {
             if (window.scrollY > 20) {
                 setIsScrolled(true);
@@ -37,20 +37,19 @@ export default function Navbar() {
         window.addEventListener('scroll', handleScroll);
         // Initial check in case the page loads already scrolled
         handleScroll();
-        
+
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     // Removed top-level mounted check to ensure SSR HTML contains the navbar links
 
     return (
-        <nav 
-            suppressHydrationWarning 
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 overflow-hidden ${
-                isTransparent 
-                    ? 'bg-transparent border-transparent py-2'
-                    : 'border-b bg-background/95 backdrop-blur-xl shadow-lg py-0' 
-            }`}
+        <nav
+            suppressHydrationWarning
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 overflow-hidden ${isTransparent
+                ? 'bg-transparent border-transparent py-2'
+                : 'border-b bg-background/95 backdrop-blur-xl shadow-lg py-0'
+                }`}
         >
             {/* Subtle background image for Navbar */}
             <div className={`absolute inset-0 z-[-1] transition-opacity duration-300 ${!isTransparent ? 'opacity-10' : 'opacity-0'}`}>
@@ -63,9 +62,9 @@ export default function Navbar() {
             </div>
             <div className="w-full max-w-[1800px] mx-auto flex h-16 md:h-20 items-center justify-between px-4 md:px-10">
                 <Link href="/" className="flex-shrink-0 flex items-center group">
-                    <div className="relative h-10 w-32 md:h-12 md:w-48 transition-transform group-hover:scale-105">
+                    <div className="relative h-28 w-64 md:h-28 md:w-52 group-hover:scale-105">
                         <Image
-                            src="/Logo.png"
+                            src={isTransparent || (mounted && resolvedTheme === 'dark') ? "/ShubhaDarkLogo.png" : "/Logo.png"}
                             alt="Shubha IT Solution"
                             fill
                             className="object-contain"
@@ -98,7 +97,7 @@ export default function Navbar() {
                             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                             className={`h-10 w-10 rounded-xl transition-colors ${isTransparent ? 'hover:bg-white/20 text-white' : 'hover:bg-blue-600/10'}`}
                         >
-                            {mounted && theme === 'dark' ? <Sun className={`h-5 w-5 ${isTransparent ? 'text-white' : 'text-orange-500'}`} /> : <Moon className={`h-5 w-5 ${isTransparent ? 'text-white' : 'text-blue-600'}`} />}
+                            {mounted && resolvedTheme === 'dark' ? <Sun className={`h-5 w-5 ${isTransparent ? 'text-white' : 'text-orange-500'}`} /> : <Moon className={`h-5 w-5 ${isTransparent ? 'text-white' : 'text-blue-600'}`} />}
                         </Button>
                         <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white rounded-xl px-8 shadow-xl shadow-orange-600/20 transition-all active:scale-95 font-black" asChild>
                             <Link href="/contact">Get a Quote</Link>
@@ -114,7 +113,7 @@ export default function Navbar() {
                         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                         className={`h-10 w-10 rounded-xl ${isTransparent ? 'hover:bg-white/20 text-white' : ''}`}
                     >
-                        {mounted && theme === 'dark' ? <Sun className={`h-6 w-6 ${isTransparent ? 'text-white' : 'text-orange-500'}`} /> : <Moon className={`h-6 w-6 ${isTransparent ? 'text-white' : 'text-blue-600'}`} />}
+                        {mounted && resolvedTheme === 'dark' ? <Sun className={`h-6 w-6 ${isTransparent ? 'text-white' : 'text-orange-500'}`} /> : <Moon className={`h-6 w-6 ${isTransparent ? 'text-white' : 'text-blue-600'}`} />}
                     </Button>
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>

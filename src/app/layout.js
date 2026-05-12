@@ -86,6 +86,13 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/Logo.png" />
         <link rel="shortcut icon" href="/favicon.jpg" type="image/jpeg" />
         
+        {/* Additional SEO Meta Tags */}
+        <meta name="article:publisher" content="https://shubhaitsolution.com" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="author" content="Shubha IT Solution" />
+        <meta name="copyright" content="2024 Shubha IT Solution" />
+      </head>
+      <body suppressHydrationWarning>
         {/* JSON-LD Structured Data */}
         <Script
           id="json-ld-org"
@@ -100,8 +107,9 @@ export default function RootLayout({ children }) {
               "description": "Professional IT solutions, web development, mobile apps, cloud infrastructure & digital transformation services",
               "sameAs": [
                 "https://www.facebook.com/ShubhaIT",
-                "https://www.linkedin.com/company/shubha-it-solution",
+                "https://www.linkedin.com/in/subha-it-bbb95340a",
                 "https://twitter.com/ShubhaIT",
+                "https://www.instagram.com/shubait_solutions?utm_source=qr&igsh=amN1bXhpMjZhMDcw"
               ],
               "contactPoint": {
                 "@type": "ContactPoint",
@@ -196,16 +204,6 @@ export default function RootLayout({ children }) {
             })
           }}
         />
-        
-        
-        
-        {/* Additional SEO Meta Tags */}
-        <meta name="article:publisher" content="https://shubhaitsolution.com" />
-        <meta name="revisit-after" content="7 days" />
-        <meta name="author" content="Shubha IT Solution" />
-        <meta name="copyright" content="2024 Shubha IT Solution" />
-      </head>
-      <body>
         <ThemeProvider>
           <Navbar />
           <main>{children}</main>
