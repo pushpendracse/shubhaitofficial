@@ -1,6 +1,7 @@
 'use client';
 
-import { MessageCircle, Target, Phone } from "lucide-react";
+import { Target, Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { Card } from "@/components/ui/card";
 
 export default function Contact() {
@@ -42,16 +43,16 @@ export default function Contact() {
                   </div>
                   <div className="flex items-start gap-5">
                     <div className="bg-white/10 p-3.5 rounded-2xl flex-shrink-0 backdrop-blur-md border border-white/20">
-                      <MessageCircle className="h-6 w-6 animate-pulse" />
+                      <WhatsAppIcon className="h-6 w-6 animate-pulse" />
                     </div>
                     <div>
                       <h5 className="font-bold text-xl mb-3">WhatsApp Support</h5>
                       <div className="flex flex-col gap-3">
                         <a href="https://wa.me/916307558532" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 rounded-xl hover:bg-white/20 transition-all font-bold backdrop-blur-md text-sm border border-white/10">
-                          <MessageCircle size={16} /> +91 6307558532
+                          <WhatsAppIcon className="w-4 h-4" /> +91 6307558532
                         </a>
                         <a href="https://wa.me/919528658256" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 rounded-xl hover:bg-white/20 transition-all font-bold backdrop-blur-md text-sm border border-white/10">
-                          <MessageCircle size={16} /> +91 9528658256
+                          <WhatsAppIcon className="w-4 h-4" /> +91 9528658256
                         </a>
                       </div>
                     </div>
@@ -126,7 +127,7 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     className="w-full py-4 rounded-xl font-black text-center transition-all hover:scale-[1.01] active:scale-[0.99] shadow-lg flex items-center justify-center gap-3 border-2 border-green-500 text-green-600 hover:bg-green-50 dark:hover:bg-green-950/10"
                   >
-                    <MessageCircle className="h-5 w-5" />
+                    <WhatsAppIcon className="h-5 w-5" />
                     Chat on WhatsApp
                   </a>
                 </div>

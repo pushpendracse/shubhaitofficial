@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowRight, Award, Star, Users, Zap } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, MessageCircle, FileText, ClipboardList, Briefcase, Rocket } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
-import AnimatedBackground from "@/components/AnimatedBackground";
 
 export default function Hero() {
   const [currentBg, setCurrentBg] = useState(0);
@@ -17,6 +17,9 @@ export default function Hero() {
     }, 5000);
     return () => clearInterval(timer);
   }, []);
+
+  const nextSlide = () => setCurrentBg((prev) => (prev + 1) % images.length);
+  const prevSlide = () => setCurrentBg((prev) => (prev - 1 + images.length) % images.length);
 
   return (
     <section id="home" className="relative pt-20 pb-16 sm:pt-28 sm:pb-24 md:pt-40 md:pb-32 overflow-hidden min-h-[90vh] flex items-center" aria-label="Hero section">
@@ -35,61 +38,92 @@ export default function Hero() {
               className="object-cover"
               priority={index === 0}
             />
-            <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px]"></div>
+            {/* Dark gradient overlay for better text readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/70 to-transparent"></div>
           </div>
         ))}
       </div>
 
-      <div className="container px-4 mx-auto relative z-10">
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/20 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6 animate-fade-in shadow-lg backdrop-blur-md border border-blue-500/30">
-            <span className="flex h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span>
-            Global IT Excellence
+      {/* Slider Controls */}
+      <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-white/10 hover:bg-blue-600 border border-white/20 flex items-center justify-center text-white backdrop-blur-md transition-all">
+        <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+      </button>
+
+      <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 z-20 h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-white/10 hover:bg-blue-600 border border-white/20 flex items-center justify-center text-white backdrop-blur-md transition-all hidden md:flex">
+        <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+      </button>
+
+      <div className="container px-12 md:px-20 mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between">
+
+        {/* Left Content */}
+        <div className="flex flex-col items-start text-left max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 text-white text-xs font-bold uppercase tracking-widest mb-6 animate-fade-in shadow-lg backdrop-blur-md border border-white/20">
+            BEST IT SOLUTIONS PROVIDER
           </div>
-          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 leading-[0.9] text-white animate-fade-in">
-            Engineering <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-orange-400 animate-gradient">Future Tech</span>
+
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight mb-6 leading-[1.1] text-white animate-fade-in">
+            Welcome to <span className="text-blue-400">Shubha IT Solution</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-200 mb-10 max-w-3xl px-4 leading-relaxed font-medium">
-            Shubha IT Solution: Architecting <span className="text-blue-400 font-bold">mission-critical software</span> and <span className="text-orange-400 font-bold">digital ecosystems</span> that redefine industry benchmarks globally.
+
+          <p className="text-lg sm:text-xl text-slate-200 mb-10 max-w-2xl leading-relaxed font-medium">
+            A modern IT powerhouse for custom software, cloud infrastructure, and digital transformation with expert guidance and industry-focused scalable solutions.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4">
-            <button className="group relative rounded-full px-10 py-5 text-lg font-black bg-blue-600 text-white transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-blue-600/30 overflow-hidden">
-              <span className="relative z-10 flex items-center gap-2">
-                Launch Project <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </button>
-            <Button size="lg" variant="outline" className="rounded-full px-10 py-7 text-lg text-dark orange-500  /20 hover:bg-orange-500 hover:text-white glass-dark transition-all hover:scale-105 active:scale-95 font-bold" asChild>
-              <Link href="/services">View Capabilities</Link>
+
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <Button size="lg" className="rounded-md px-8 py-6 text-lg font-bold bg-blue-600 text-white transition-all hover:bg-blue-700 shadow-xl overflow-hidden flex items-center gap-2" asChild>
+              <Link href="/services">Explore Services</Link>
+            </Button>
+            <Button size="lg" className="rounded-md px-8 py-6 text-lg text-white border-2 border-white bg-transparent hover:bg-white/10 transition-all font-bold backdrop-blur-md" asChild>
+              <Link href="/portfolio">View Portfolio</Link>
             </Button>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mt-16 md:mt-24 w-full max-w-4xl">
-            <StatItem number="150+" label="Global Deployments" icon={<Award className="h-6 w-6 text-blue-400" />} />
-            <StatItem number="99%" label="Success Rate" icon={<Star className="h-6 w-6 text-orange-400" />} />
-            <StatItem number="50+" label="Tech Mavericks" icon={<Users className="h-6 w-6 text-blue-300" />} />
-            <StatItem number="24/7" label="Active Support" icon={<Zap className="h-6 w-6 text-orange-500" />} />
+          {/* Slider Indicators */}
+          <div className="flex gap-2 mt-12 sm:mt-16">
+            {images.map((_, idx) => (
+              <button key={idx} onClick={() => setCurrentBg(idx)} className={`h-1 sm:h-1.5 rounded-full transition-all ${idx === currentBg ? 'w-8 bg-blue-500' : 'w-4 bg-white/40'}`} aria-label={`Go to slide ${idx + 1}`} />
+            ))}
           </div>
         </div>
-      </div>
-      <div className="absolute inset-0 pointer-events-none opacity-30">
-        <AnimatedBackground />
+
+        {/* Right Floating Widgets (Mimicking Inspiration) */}
+        <div className="hidden lg:flex flex-col items-end gap-5 relative z-20 pr-12 mt-10 lg:mt-0">
+
+          {/* Widget 1 */}
+          <div className="bg-white text-slate-900 rounded-full py-2 px-5 shadow-2xl flex items-center gap-2 animate-bounce-gentle hover:scale-105 transition-transform cursor-pointer border border-slate-100">
+            <span className="font-bold text-sm">We're Hiring 🚀</span>
+          </div>
+
+          {/* Widget 2 */}
+          <div className="bg-white rounded-xl p-4 shadow-2xl w-64 hover:scale-105 transition-transform cursor-pointer relative overflow-hidden group border border-slate-100">
+            <div className="absolute top-0 left-0 w-1.5 h-full bg-blue-600"></div>
+            <h4 className="font-bold text-slate-900 text-[15px] mb-1">Free IT Consultation</h4>
+            <p className="text-xs text-slate-500 mb-3">Limited slots available this week!</p>
+            <Link href="/#contact" className="text-blue-600 text-xs font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+              Book Quickly <ArrowRight className="h-3 w-3" />
+            </Link>
+          </div>
+
+          {/* Widget 3 */}
+          <div className="bg-white rounded-full py-3 px-5 shadow-2xl flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer border border-slate-100">
+            <span className="font-bold text-slate-900 text-sm">Need Help? <span className="text-blue-600">Chat with us 👋</span></span>
+          </div>
+
+          {/* Circular Action Icons on far right */}
+          <div className="absolute -right-4 top-1/2 -translate-y-1/2 flex flex-col gap-4">
+            <button className="h-12 w-12 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition-transform">
+              <ClipboardList className="h-5 w-5" />
+            </button>
+            <button className="h-12 w-12 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition-transform">
+              <FileText className="h-5 w-5" />
+            </button>
+            <button className="h-12 w-12 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition-transform">
+              <WhatsAppIcon className="h-6 w-6" />
+            </button>
+          </div>
+        </div>
+
       </div>
     </section>
-  );
-}
-
-function StatItem({ number, label, icon }) {
-  return (
-    <div className="flex flex-col items-center p-6 rounded-3xl glass-dark border border-white/5 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 group cursor-default">
-      <div className="mb-4 p-3 rounded-2xl bg-white/5 group-hover:scale-110 transition-transform">{icon}</div>
-      <div className="text-3xl sm:text-4xl font-black text-white mb-1 tracking-tight">
-        {number}
-      </div>
-      <div className="text-[10px] sm:text-xs text-slate-400 text-center font-black uppercase tracking-widest">
-        {label}
-      </div>
-    </div>
   );
 }

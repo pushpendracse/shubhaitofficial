@@ -3,7 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import { Mail, MapPin, Globe, Linkedin, Twitter, Github, Phone, MessageCircle } from 'lucide-react';
+import { Mail, MapPin, Globe, Linkedin, Twitter, Github, Phone } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
 import { Button } from '@/components/ui/button';
 
 export default function Footer() {
@@ -83,8 +84,8 @@ export default function Footer() {
                                 </div>
                             </div>
                             <div className="flex items-center gap-5 group">
-                                <div className="h-12 w-12 rounded-2xl bg-orange-500/10 flex items-center justify-center flex-shrink-0 border border-orange-500/20 group-hover:bg-orange-500 group-hover:text-white transition-all">
-                                    <MessageCircle className="h-5 w-5" />
+                                <div className="h-12 w-12 rounded-2xl bg-[#25D366]/10 flex items-center justify-center flex-shrink-0 border border-[#25D366]/20 group-hover:bg-[#25D366] group-hover:text-white transition-all">
+                                    <WhatsAppIcon className="h-5 w-5 text-[#25D366] group-hover:text-white" />
                                 </div>
                                 <div className="flex flex-col gap-1">
                                     <a href="https://wa.me/916307558532" target="_blank" rel="noopener noreferrer" className="text-sm font-black text-orange-600 hover:underline">WhatsApp Support 1</a>

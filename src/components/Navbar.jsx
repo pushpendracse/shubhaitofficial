@@ -4,6 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
+import { usePathname } from 'next/navigation';
 import { Sun, Moon, Menu } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -16,18 +17,43 @@ import {
 
 export default function Navbar() {
     const [mounted, setMounted] = React.useState(false);
+    const [isScrolled, setIsScrolled] = React.useState(false);
     const { theme, setTheme } = useTheme();
+    const pathname = usePathname();
+    
+    const isTransparent = pathname === '/' && !isScrolled;
 
     React.useEffect(() => {
         setMounted(true);
+        
+        const handleScroll = () => {
+            if (window.scrollY > 20) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        // Initial check in case the page loads already scrolled
+        handleScroll();
+        
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     // Removed top-level mounted check to ensure SSR HTML contains the navbar links
 
     return (
-        <nav suppressHydrationWarning className="fixed top-0 left-0 right-0 z-50 border-b bg-background/95 backdrop-blur-xl shadow-lg overflow-hidden">
+        <nav 
+            suppressHydrationWarning 
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 overflow-hidden ${
+                isTransparent 
+                    ? 'bg-transparent border-transparent py-2'
+                    : 'border-b bg-background/95 backdrop-blur-xl shadow-lg py-0' 
+            }`}
+        >
             {/* Subtle background image for Navbar */}
-            <div className="absolute inset-0 z-[-1] opacity-10">
+            <div className={`absolute inset-0 z-[-1] transition-opacity duration-300 ${!isTransparent ? 'opacity-10' : 'opacity-0'}`}>
                 <Image
                     src="/header-bg.png"
                     alt="header background"
@@ -35,9 +61,9 @@ export default function Navbar() {
                     className="object-cover"
                 />
             </div>
-            <div className="w-full max-w-[1800px] mx-auto flex h-20 md:h-24 items-center justify-between px-4 md:px-10">
+            <div className="w-full max-w-[1800px] mx-auto flex h-16 md:h-20 items-center justify-between px-4 md:px-10">
                 <Link href="/" className="flex-shrink-0 flex items-center group">
-                    <div className="relative h-12 w-40 md:h-16 md:w-64 transition-transform group-hover:scale-105">
+                    <div className="relative h-10 w-32 md:h-12 md:w-48 transition-transform group-hover:scale-105">
                         <Image
                             src="/Logo.png"
                             alt="Shubha IT Solution"
@@ -50,18 +76,18 @@ export default function Navbar() {
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center gap-10">
-                    <Link href="/" className="text-sm font-bold hover:text-primary transition-all hover:-translate-y-0.5">
+                    <Link href="/" className={`text-sm font-bold transition-all hover:-translate-y-0.5 hover:text-primary ${isTransparent ? 'text-white drop-shadow-sm' : 'text-foreground'}`}>
                         Home
                     </Link>
-                    <Link href="/services" className="text-sm font-bold hover:text-primary transition-all hover:-translate-y-0.5">
+                    <Link href="/services" className={`text-sm font-bold transition-all hover:-translate-y-0.5 hover:text-primary ${isTransparent ? 'text-white drop-shadow-sm' : 'text-foreground'}`}>
                         Services
                     </Link>
-                    <Link href="/about" className="text-sm font-bold hover:text-primary transition-all hover:-translate-y-0.5">
+                    <Link href="/about" className={`text-sm font-bold transition-all hover:-translate-y-0.5 hover:text-primary ${isTransparent ? 'text-white drop-shadow-sm' : 'text-foreground'}`}>
                         About
                     </Link>
                     <Link
                         href="/portfolio"
-                        className="text-sm font-black text-blue-600 hover:text-orange-500 transition-all hover:-translate-y-0.5"
+                        className={`text-sm font-black transition-all hover:-translate-y-0.5 ${isTransparent ? 'text-blue-300 hover:text-white drop-shadow-sm' : 'text-blue-600 hover:text-orange-500'}`}
                     >
                         Portfolio
                     </Link>
@@ -70,9 +96,9 @@ export default function Navbar() {
                             variant="ghost"
                             size="icon"
                             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                            className="h-10 w-10 rounded-xl hover:bg-blue-600/10 transition-colors"
+                            className={`h-10 w-10 rounded-xl transition-colors ${isTransparent ? 'hover:bg-white/20 text-white' : 'hover:bg-blue-600/10'}`}
                         >
-                            {mounted && theme === 'dark' ? <Sun className="h-5 w-5 text-orange-500" /> : <Moon className="h-5 w-5 text-blue-600" />}
+                            {mounted && theme === 'dark' ? <Sun className={`h-5 w-5 ${isTransparent ? 'text-white' : 'text-orange-500'}`} /> : <Moon className={`h-5 w-5 ${isTransparent ? 'text-white' : 'text-blue-600'}`} />}
                         </Button>
                         <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white rounded-xl px-8 shadow-xl shadow-orange-600/20 transition-all active:scale-95 font-black" asChild>
                             <Link href="/contact">Get a Quote</Link>
@@ -86,13 +112,13 @@ export default function Navbar() {
                         variant="ghost"
                         size="icon"
                         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                        className="h-10 w-10 rounded-xl"
+                        className={`h-10 w-10 rounded-xl ${isTransparent ? 'hover:bg-white/20 text-white' : ''}`}
                     >
-                        {mounted && theme === 'dark' ? <Sun className="h-6 w-6 text-orange-500" /> : <Moon className="h-6 w-6 text-blue-600" />}
+                        {mounted && theme === 'dark' ? <Sun className={`h-6 w-6 ${isTransparent ? 'text-white' : 'text-orange-500'}`} /> : <Moon className={`h-6 w-6 ${isTransparent ? 'text-white' : 'text-blue-600'}`} />}
                     </Button>
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="outline" size="icon" className="h-12 w-12 border-2 rounded-xl shadow-md">
+                            <Button variant="outline" size="icon" className={`h-12 w-12 border-2 rounded-xl shadow-md ${isTransparent ? 'border-white/30 text-white bg-white/10 backdrop-blur-md hover:bg-white/20 hover:text-white' : ''}`}>
                                 <Menu className="h-7 w-7" />
                             </Button>
                         </DropdownMenuTrigger>
