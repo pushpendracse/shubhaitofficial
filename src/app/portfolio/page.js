@@ -10,6 +10,14 @@ import { Button } from '@/components/ui/button';
 const portfolioData = [
     {
         id: 1,
+        title: "Viksit Kushinagar",
+        description: "A comprehensive government initiative platform for the holistic development of Kushinagar, featuring tourism promotion, infrastructure updates, and citizen engagement tools.",
+        thumbnail: "/portfolio/Viksitkushinagar.png",
+        demoLink: "https://viksitkushinagar.com/",
+        tags: ["Government", "Next.js", "Full Stack"]
+    },
+    {
+        id: 2,
         title: "Maison Dorée Fine Dining",
         description: "A luxury restaurant digital experience featuring an artisanal menu interface, integrated reservation system, and immersive visual storytelling.",
         thumbnail: "/portfolio/restaurant.png",
@@ -17,7 +25,7 @@ const portfolioData = [
         tags: ["UI/UX", "Next.js", "Hospitality"]
     },
     {
-        id: 2,
+        id: 3,
         title: "Ether SaaS landing",
         description: "High-conversion landing page for a cloud-native SaaS platform with interactive pricing, feature tours, and seamless animations.",
         thumbnail: "/portfolio/saas.png",
@@ -25,7 +33,7 @@ const portfolioData = [
         tags: ["React", "Framer Motion", "UI/UX"]
     },
     {
-        id: 3,
+        id: 4,
         title: "NeuroGen AI Platform",
         description: "An AI-powered content generation suite that allows users to create images, text, and music through a intuitive unified interface.",
         thumbnail: "/portfolio/ai.png",
@@ -33,7 +41,7 @@ const portfolioData = [
         tags: ["AI/ML", "TypeScript", "Node.js"]
     },
     {
-        id: 4,
+        id: 5,
         title: "Vault Fintech App",
         description: "Premium investment and crypto management application with institutional-grade security and advanced portfolio tracking.",
         thumbnail: "/portfolio/fintech.png",
@@ -41,7 +49,7 @@ const portfolioData = [
         tags: ["Blockchain", "Security", "Real-time"]
     },
     {
-        id: 5,
+        id: 6,
         title: "Global Supply Chain Pro",
         description: "Enterprise level logistics tracker optimized for global freight companies with IoT integration and route optimization.",
         thumbnail: "/portfolio/ecommerce.png", // Reusing image for demo variety
@@ -49,7 +57,7 @@ const portfolioData = [
         tags: ["Enterprise", "IoT", "React"]
     },
     {
-        id: 6,
+        id: 7,
         title: "Lumina Creative Studio",
         description: "A minimal and artistic portfolio template for creators and agencies, focusing on high-quality visuals and smooth transitions.",
         thumbnail: "/portfolio/saas.png", // Reusing image for demo variety
